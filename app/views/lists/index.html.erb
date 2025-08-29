@@ -1,0 +1,16 @@
+<div class="container py-4">
+  <h1 class="mb-3">My Lists</h1>
+
+  <!-- link para criar nova lista -->
+  <%= link_to "New list", new_list_path, class: "btn btn-primary mb-3" %>
+
+  <!-- listagem simples -->
+  <ul class="list-group">
+    <% @lists.each do |list| %>
+      <li class="list-group-item d-flex justify-content-between">
+        <span><%= list.name %></span>
+        <%= link_to "Open", list_path(list), class: "btn btn-outline-secondary btn-sm" %>
+      </li>
+    <% end %>
+  </ul>
+</div>

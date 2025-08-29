@@ -1,0 +1,13 @@
+<<div class="container py-4">
+  <h1 class="mb-3">New list</h1>
+
+  <!-- simple_form da lista -->
+  <%= simple_form_for(@list) do |f| %>
+    <%= f.input :name, placeholder: "e.g. Drama" %>
+    <%= f.submit "Create list", class: "btn btn-primary" %>
+  <% end %>
+
+  <div class="mt-3">
+    <%= link_to "Back", lists_path, class: "btn btn-link" %>
+  </div>
+</div>
