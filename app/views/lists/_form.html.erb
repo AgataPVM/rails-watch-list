@@ -1,0 +1,5 @@
+<%= simple_form_for @list do |f| %>
+  <%= f.input :name, label: "Nome da lista" %>
+  <%= f.input :photo, as: :file, label: "Capa da lista" %>
+  <%= f.submit "Criar lista", class: "btn btn-primary" %>
+<% end %>

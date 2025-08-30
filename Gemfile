@@ -31,6 +31,8 @@ gem "bootstrap", "~> 5.3"  # CSS do Bootstrap
 gem "simple_form"          # formulários estilosos
 gem "autoprefixer-rails"   # compatibilidade de CSS nos browsers
 gem "font-awesome-sass", "~> 6.1" # (opcional) ícones
+gem "cloudinary"
+gem "dotenv-rails", groups: [:development, :test]
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"

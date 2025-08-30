@@ -25,7 +25,8 @@ Rails.application.configure do
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
-
+  # config/environments/development.rb ou production.rb
+  config.active_storage.service = :cloudinary
   # Do not fall back to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
