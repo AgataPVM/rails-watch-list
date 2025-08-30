@@ -1,42 +1,18 @@
-<div class="container py-4">
-  <h1 class="mb-3"><%= @list.name %></h1>
-    <% if @list.photo.attached? %>
-        <%= cl_image_tag @list.photo.key,
-              width: 1000, height: 400, crop: :fill,
-              class: "img-fluid rounded mb-4" %>
-      <% end %>
-  <!-- bookmarks da lista -->
-  <h2 class="h5">Bookmarks</h2>
-  <% if @list.bookmarks.any? %>
-    <ul class="list-group mb-4">
-      <% @list.bookmarks.each do |bookmark| %>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div>
-            <strong><%= bookmark.movie.title %></strong>
-            <div class="text-muted"><%= bookmark.comment %></div>
-          </div>
-          <!-- apagar bookmark -->
-          <%= link_to "Delete",
-    bookmark_path(bookmark),
-    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-    class: "btn btn-outline-danger btn-sm" %>
-        </li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p class="text-muted">No bookmarks yet.</p>
+<!-- app/views/lists/show.html.erb -->
+<h1><%= @list.name %></h1>
+
+<ul class="list-group my-3">
+  <% @list.bookmarks.each do |bookmark| %>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+      <div>
+        <strong><%= bookmark.movie.title %></strong>
+        <div class="text-muted"><%= bookmark.comment %></div>
+      </div>
+
+      <%= link_to "Delete",
+            bookmark_path(bookmark),
+            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+            class: "btn btn-sm btn-outline-danger" %>
+    </li>
   <% end %>
-
-  <!-- (Opcional) Form embutido de novo bookmark -->
-  <div class="card p-3 mb-3">
-    <h3 class="h6">Add a movie to this list</h3>
-    <%= simple_form_for([@list, @bookmark]) do |f| %>
-      <!-- dropdown de filmes (usa f.association) -->
-      <%= f.association :movie, prompt: "Select a movie" %>
-      <%= f.input :comment, placeholder: "Why is this movie here?" %>
-      <%= f.submit "Add bookmark", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-
-  <%= link_to "All lists", lists_path, class: "btn btn-link" %>
-</div>
+</ul>
